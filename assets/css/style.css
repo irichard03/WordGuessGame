@@ -18,8 +18,10 @@ h2 {
     background-color: black;
     font-size: 3em;
     text-align: center;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
+    height: 50px;
+    
     }
 
 h3 {
@@ -74,16 +76,12 @@ hr {
    
 }
 
-#winning {
-    position: fixed bottom;
-    margin-bottom: 0px;
-    margin-left: 440px;
-    margin-right: 440px;
-}
+
 
 #start {
     background-color: goldenrod; 
     border: solid black;
+    width: 100%;
     color: black;
     padding: 15px 32px;
     text-align: center;
@@ -91,19 +89,22 @@ hr {
     display: inline-block;
     font-size: 32px;
     font-family: 'Open Sans Condensed', sans-serif;
-    margin-left: 600px;
-    margin-top: 80px;
-
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
     animation-name: flash;
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    outline:none;
 }
 
-#start:focus {
-    transition: 3s;
+#start:active {
+
     animation-play-state: paused;
-    opacity: 1.0;
+    background-color: red;
+    color: white;
 }
 
 @keyframes flash {
@@ -112,11 +113,13 @@ hr {
     100% { opacity: 1.0; }
 }
 
-#message{
+h4 {
     visibility: visible;
     width: 100%;
     text-align: center;
     font-size: 2em;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 5px;
     padding-top: 5px;
     color: black;
