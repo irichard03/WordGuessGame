@@ -18,9 +18,27 @@ h2 {
     background-color: black;
     font-size: 3em;
     text-align: center;
-    
+    bottom: 0;
+    width: 100%;
+    }
+
+h3 {
+    color: goldenrod;
+    background-color: black;
+    font-size: 4em;
+    text-align: center;
+    border: solid yellow 2px;
+    padding: 10px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans Condensed', sans-serif;
 
 }
+
+
 hr {
     border: solid 2px gold;
 }
@@ -41,6 +59,7 @@ hr {
     width: 20%;
     height: 200px;
     float: left;
+    
 }
 
 #drago {
@@ -60,4 +79,48 @@ hr {
     margin-bottom: 0px;
     margin-left: 440px;
     margin-right: 440px;
+}
+
+#start {
+    background-color: goldenrod; 
+    border: solid black;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: bold;
+    display: inline-block;
+    font-size: 32px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-left: 600px;
+    margin-top: 80px;
+
+    animation-name: flash;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#start:focus {
+    transition: 3s;
+    animation-play-state: paused;
+    opacity: 1.0;
+}
+
+@keyframes flash {
+    0%   { opacity: 1.0; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+#message{
+    visibility: visible;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    color: black;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+
 }
