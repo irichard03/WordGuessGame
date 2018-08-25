@@ -6,30 +6,33 @@ body {
 .box {
    width: 100%;
    display: inline-block;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
    background-color: goldenrod;
    font-family: 'Open Sans Condensed', sans-serif;
    color: black;
    font-size: 2em;
-
 }
 
-#left{
+#left {
+    margin-left: 10px;
     float: left;
-    margin-left: 20%;
-    visibility: visible;
+    visibility: hidden;
+    width: 33%;    
+}
+
+#middle {
+    float: left;
+    visibility: hidden;
+    width: 33%;
+    margin-left: -10px;
     
 }
 
-#middle{
+#right {
     float: left;
-    width: 60%;
-    visibility: visible;
-}
-
-#right{
-    float: right;
-    margin-right: 20%;
-    visibility: visible;
+    visibility: hidden; 
+    margin-left: 10px;
 }
 
 h1 {
@@ -176,7 +179,7 @@ hr {
     margin-right: auto;
     margin-bottom: 5px;
     padding-top: 5px;
-    color: black;
+    color: white;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
 
