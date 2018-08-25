@@ -3,6 +3,35 @@ body {
     color: gold;
 }
 
+.box {
+   width: 100%;
+   display: inline-block;
+   background-color: goldenrod;
+   font-family: 'Open Sans Condensed', sans-serif;
+   color: black;
+   font-size: 2em;
+
+}
+
+#left{
+    float: left;
+    margin-left: 20%;
+    visibility: visible;
+    
+}
+
+#middle{
+    float: left;
+    width: 60%;
+    visibility: visible;
+}
+
+#right{
+    float: right;
+    margin-right: 20%;
+    visibility: visible;
+}
+
 h1 {
     color: red;
     background-color: goldenrod;
@@ -18,9 +47,10 @@ h2 {
     background-color: black;
     font-size: 3em;
     text-align: center;
-    bottom: 0px;
+    position: fixed ;
     width: 100%;
-    height: 50px;
+    height: 69px;
+   
     
     }
 
@@ -92,7 +122,7 @@ hr {
     font-family: 'Open Sans Condensed', sans-serif;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 0px;
     margin-bottom: 20px;
     animation-name: flash;
     animation-duration: 1s;
@@ -127,7 +157,7 @@ hr {
     font-family: 'Open Sans Condensed', sans-serif;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
