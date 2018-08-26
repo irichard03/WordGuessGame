@@ -5,8 +5,8 @@ function gameStart(){
     
     //display score board and change button tag.
     document.getElementById("message").style.visibility = "visible";
-    document.getElementById("start").innerHTML = "Restart";
-    document.getElementById("start").id = "restart";
+    document.getElementById("start").style.display = "none";
+    document.getElementById("restart").style.display = "inline-block";
     
 
     //update scorebox with a loop instead of 3 statements. 
