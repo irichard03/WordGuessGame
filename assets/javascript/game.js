@@ -5,6 +5,7 @@
     var guessThis;      //Word to be guessed
     var letters = [];   //stores letters that have been picked
                         //List of words.
+    var guessThis;
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLOV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
@@ -52,6 +53,7 @@ function gameSetup(){
 function updateScore(){
     document.getElementById("letters").innerHTML = "Letters: " + letters;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
+    document.getElementById("guessMe").innerHTML = word;
 }
 
 
@@ -65,8 +67,10 @@ function gameStart(){
         letters.push(choice);
         //loop through wordbank target checking for match to choice.
         for(var x = 0; x <= wordBank[target].length - 1;x++){
-           
-            console.log(x)  //debug my for loop contents.
+            if(guessThis.charAt(x) === choice.toUpperCase()){
+                console.log(x)  //debug my for loop contents.
+                word[x] = choice;
+            }
         }
         updateScore();
         console.log(word);
