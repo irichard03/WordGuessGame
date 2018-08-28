@@ -26,6 +26,7 @@ function gameSetup(){
     document.getElementById("restart").style.display = "inline-block";
     document.getElementById("tries").innerHTML = "Tries: " + tries;
     document.getElementById("score").innerHTML = "Score: " + score;
+    word = [];
     letters = [];
     document.getElementById("letters").innerHTML = "Letters: ";
     document.getElementById("guessMe").innerHTML ="";
@@ -65,7 +66,7 @@ function gameStart(){
     document.onkeyup = function(event) {
         choice = event.key;    
         letters.push(choice);
-        //loop through wordbank target checking for match to choice.
+        //loop through wordbank target checking for match to choice, checking each character of string
         for(var x = 0; x <= wordBank[target].length - 1;x++){
             if(guessThis.charAt(x) === choice.toUpperCase()){
                 console.log(x)  //debug my for loop contents.
