@@ -2,6 +2,7 @@
 
     var tries = 5;      //# of incorrect guesses, when reaches 0 you lose comrade.
     var score = 0;      //# of successfully guessed words.
+    var guessThis;      //Word to be guessed
     var letters = [];   //stores letters that have been picked
                         //List of words.
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLOV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
@@ -28,8 +29,10 @@ function gameSetup(){
     document.getElementById("letters").innerHTML = "Letters: ";
     document.getElementById("guessMe").innerHTML ="";
     target = getRandomInt(28);
+    guessThis = wordBank[target];
+   
     
-    console.log(wordBank[target]); //GAME GENIE ONLY NECESSARY FOR FAT AMERICANS.
+    console.log(guessThis); //GAME GENIE ONLY NECESSARY FOR FAT AMERICANS.
 
     for(var i = 0; i < scoreBox.length; i++){
         document.getElementById(scoreBox[i]).style.visibility = "visible";
@@ -38,8 +41,7 @@ function gameSetup(){
     //Sets up the blanks equal to length of the word.
     for(var blanks = 0; blanks <= wordBank[target].length - 1; blanks++){
         word[blanks] = "_"
-        
-
+    
     }
     
     document.getElementById("guessMe").innerHTML =  word;
@@ -61,42 +63,14 @@ function gameStart(){
     document.onkeyup = function(event) {
         choice = event.key;    
         letters.push(choice);
+        //loop through wordbank target checking for match to choice.
         for(var x = 0; x <= wordBank[target].length - 1;x++){
-            
+           
             console.log(x)  //debug my for loop contents.
         }
-        
-
+        updateScore();
+        console.log(word);
         //Update Score
-       
-    
+    }
 
-}
-
-    //display score board and change start button to restart button tag.
-    
-    
-    //pick a random number 1-28 to that corresponds to a letter from var wordbank.
-    
-   
-                
-
-    //update scorebox array and loop for making it visible.
-    
-
-    
-    //set initial score and tries. Create letters array and word bank array.
-    
-
-   
-    
-    
-    
-    
-    
-    //math random function to get wordbank word and assign to target in game word choice loop.
-    
-   
-    
-   
 }
