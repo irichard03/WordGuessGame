@@ -6,7 +6,7 @@
     var letters = [];   //stores letters that have been picked
                         //List of words.
     var guessThis;
-    var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLOV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
+    var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLEV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
     var word =  [];     //fills in with letters player picks, match them all and get points added to score.
@@ -46,7 +46,7 @@ function gameSetup(){
     
     }
     
-    document.getElementById("guessMe").innerHTML =  word;
+    document.getElementById("guessMe").innerHTML =  word.toString().replace(/,/g,"");
 }
 
 
@@ -54,7 +54,8 @@ function gameSetup(){
 function updateScore(){
     document.getElementById("letters").innerHTML = "Letters: " + letters;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
-    document.getElementById("guessMe").innerHTML = word;
+    
+    document.getElementById("guessMe").innerHTML = word.toString().replace(/,/g,"");
 }
 
 
@@ -65,12 +66,12 @@ function gameStart(){
     //get input from player and track letters player picks by pushing in letters array.
     document.onkeyup = function(event) {
         choice = event.key;    
-        letters.push(choice);
+        letters.push(choice.toUpperCase());
         //loop through wordbank target checking for match to choice, checking each character of string
         for(var x = 0; x <= wordBank[target].length - 1;x++){
             if(guessThis.charAt(x) === choice.toUpperCase()){
                 console.log(x)  //debug my for loop contents.
-                word[x] = choice;
+                word[x] = choice.toUpperCase();
             }
         }
         updateScore();
