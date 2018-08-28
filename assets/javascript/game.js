@@ -2,12 +2,12 @@
 
     var tries = 5;      //# of incorrect guesses, when reaches 0 you lose comrade.
     var score = 0;      //# of successfully guessed words.
-    var letters = [];   //Ivana White turns these
+    var letters = [];   //stores letters that have been picked
                         //List of words.
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLOV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
-    var word = "Letters: ";     //String for tracking letters that have already been guessed += used to concat choices.
+    var word =  [];     //fills in with letters player picks, match them all and get points added to score.
     var playing = true;         //boolean to use in case I need to stop game
     var scoreBox = ["left", "middle", "right"];     //array for scorebox visibilty change...
 
@@ -17,7 +17,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-//Function to initialize actions on game start
+//Function to initialize actions on game start, adds scoreboard by making it visible and creating inner html. Also resets values for letters array/picks a word.
 function gameSetup(){
     document.getElementById("message").style.visibility = "visible";
     document.getElementById("start").style.display = "none";
@@ -29,34 +29,46 @@ function gameSetup(){
     document.getElementById("guessMe").innerHTML ="";
     target = getRandomInt(28);
     
-    console.log(wordBank[target]);
+    console.log(wordBank[target]); //GAME GENIE ONLY NECESSARY FOR FAT AMERICANS.
 
     for(var i = 0; i < scoreBox.length; i++){
         document.getElementById(scoreBox[i]).style.visibility = "visible";
     }
 
-    for(var blanks = 0; blanks <= wordBank[target].length; blanks++){
-                
-        document.getElementById("guessMe").innerHTML += "_";
+    //Sets up the blanks equal to length of the word.
+    for(var blanks = 0; blanks <= wordBank[target].length - 1; blanks++){
+        word[blanks] = "_"
+        
 
     }
+    
+    document.getElementById("guessMe").innerHTML =  word;
 }
 
-//GameStart is my MAIN function.
-//on click game begins, start button is now a restart button.  
 
+//Updates score
+function updateScore(){
+    document.getElementById("letters").innerHTML = "Letters: " + letters;
+    document.getElementById("tries").innerHTML = "Tries: " + tries;
+}
+
+
+//GameStart is my MAIN function.
 function gameStart(){
     gameSetup();
-
+    
+    //get input from player and track letters player picks by pushing in letters array.
     document.onkeyup = function(event) {
-                
-        //Change guessMe to one of the words in the wordbank.
-        
-        //display letters when pressed.    
         choice = event.key;    
         letters.push(choice);
-        document.getElementById("letters").innerHTML = word + letters;
-        document.getElementById("tries").innerHTML = "Tries: " + tries;
+        for(var x = 0; x <= wordBank[target].length - 1;x++){
+            
+            console.log(x)  //debug my for loop contents.
+        }
+        
+
+        //Update Score
+       
     
 
 }
