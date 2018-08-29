@@ -6,12 +6,13 @@
     var letters;   //stores letters that have been picked
                         //List of words.
     var guessThis;      //the word player tries to find
+    var myMessage;      //message string that changes with score
     var failCheck;      //holds result of search, if negative letter wasn't found and score tries should decrement
     var checker;        //stores position from .search method, if -1 score drops
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLEV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
-    var word;     //fills in with letters player picks, match them all and get points added to score.
+    var word     //fills in with letters player picks, match them all and get points added to score.
     var playing = true;         //boolean to use in case I need to stop game
     var scoreBox = ["left", "middle", "right"];     //array for scorebox visibilty change...
 
@@ -26,14 +27,12 @@ function gameSetup(){
     document.getElementById("message").style.visibility = "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "inline-block";
-    tries = 5;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
-    score = 0;
     document.getElementById("score").innerHTML = "Score: " + score;
     word = [];
     letters = [];
     document.getElementById("letters").innerHTML = "Letters: ";
-    document.getElementById("guessMe").innerHTML ="";
+    
     target = getRandomInt(28);
     guessThis = wordBank[target];
    
@@ -51,20 +50,69 @@ function gameSetup(){
     }
     
     document.getElementById("guessMe").innerHTML =  word.toString().replace(/,/g,"");
+    
+}
+
+
+function textChange(){
+    if(score ===1){
+        myMessage = "We are winning друзья!"
+    }
+
+    if(score ===2){
+        myMessage = "You want a prize? Get to 5 Давай!"
+    }
+
+    if(score ===3){
+        myMessage = "You will see Montana очень."
+    }
+
+    if(score ===4){
+        myMessage = "I hope you like техно."
+    }
 }
 
 
 //Updates score
 function updateScore(){
+    
+    //successful guess!
+    if(failCheck === guessThis){
+        score++;
+        textChange();
+        document.getElementById("message").innerHTML = myMessage;
+        tries = 5;
+        if(score === 5){
+            document.getElementById("message").innerHTML = "You train with спецна́з now!";
+            document.getElementById("guessMe").style.visibility = "hidden";
+            document.getElementById("guessMe").style.display = "none";
+            document.getElementById("reward").style.visibility = "visible";
+            document.getElementById("reward").style.display = "inline-block";
+
+
+
+        }
+        gameSetup();
+
+    }
+
+    //unsuccessful guess!
+    if(checker === -1){
+        tries --;
+        if(tries === 0){
+            
+            document.getElementById("message").innerHTML = "You have lost подводная лодка!";
+            document.getElementById("message").style.fontSize = "2em";
+            score =0;
+            tries =5;
+            gameSetup();
+        }
+    }
+
     document.getElementById("letters").innerHTML = "Letters: " + letters;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
+    document.getElementById("score").innerHTML = "Score: " + score;
     document.getElementById("guessMe").innerHTML = failCheck;
-
-    if(failCheck === guessThis){
-        alert("Match");
-        score++;
-        document.getElementById("score").innerHTML = "Score: " + score;
-    }
 
     
 }
@@ -89,8 +137,9 @@ function gameStart(){
         
         }
         failCheck = word.toString().replace(/,/g,"").toUpperCase();
-        //checker = .search()
+        checker = failCheck.search(choice.toUpperCase());
         console.log(failCheck);
+        console.log(checker);
 
 
         //console.log(tries)

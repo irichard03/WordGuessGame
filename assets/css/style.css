@@ -186,3 +186,9 @@ hr {
     font-weight: bold;
 
 }
+
+#reward{
+    visibility: hidden;
+    display: none;
+    margin-left: 460px;
+}
