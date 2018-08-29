@@ -69,11 +69,19 @@ function gameStart(){
         letters.push(choice.toUpperCase());
         //loop through wordbank target checking for match to choice, checking each character of string
         for(var x = 0; x <= wordBank[target].length - 1;x++){
+            
             if(guessThis.charAt(x) === choice.toUpperCase()){
                 //console.log(x)  //debug my for loop contents.
                 word[x] = choice.toUpperCase();
+                
             }
+            else if(x === wordBank[target].length-1){
+                tries--;
+            }
+            
+            
         }
+        console.log(tries)
         updateScore();
         //console.log(word);
         
