@@ -1,9 +1,9 @@
-//variable declarations
+//variable declarations sorry for so many.
 
     var tries = 5;      //# of incorrect guesses, when reaches 0 you lose comrade.
     var score = 0;      //# of successfully guessed words.
     var guessThis;      //Word to be guessed
-    var letters;   //stores letters that have been picked
+    var letters;        //stores letters that have been picked
                         //List of words.
     var guessThis;      //the word player tries to find
     var myMessage;      //message string that changes with score
@@ -13,7 +13,7 @@
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
     var word     //fills in with letters player picks, match them all and get points added to score.
-    var playing = true;         //boolean to use in case I need to stop game
+    
     var scoreBox = ["left", "middle", "right"];     //array for scorebox visibilty change...
 
 
@@ -29,13 +29,13 @@ function gameSetup(){
     document.getElementById("restart").style.display = "inline-block";
     document.getElementById("tries").innerHTML = "Tries: " + tries;
     document.getElementById("score").innerHTML = "Score: " + score;
+    
     word = [];
     letters = [];
     document.getElementById("letters").innerHTML = "Letters: ";
     
     target = getRandomInt(28);
-    guessThis = wordBank[target];
-   
+    guessThis = wordBank[target];   
     
     console.log(guessThis); //GAME GENIE ONLY NECESSARY FOR FAT AMERICANS.
 
@@ -53,7 +53,7 @@ function gameSetup(){
     
 }
 
-
+//changes text based on score.
 function textChange(){
     if(score ===1){
         myMessage = "We are winning друзья!"
