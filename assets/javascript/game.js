@@ -70,13 +70,13 @@ function gameStart(){
         //loop through wordbank target checking for match to choice, checking each character of string
         for(var x = 0; x <= wordBank[target].length - 1;x++){
             if(guessThis.charAt(x) === choice.toUpperCase()){
-                console.log(x)  //debug my for loop contents.
+                //console.log(x)  //debug my for loop contents.
                 word[x] = choice.toUpperCase();
             }
         }
         updateScore();
-        console.log(word);
-        //Update Score
+        //console.log(word);
+        
     }
 
 }
