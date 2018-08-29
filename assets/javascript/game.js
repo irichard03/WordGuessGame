@@ -3,13 +3,15 @@
     var tries = 5;      //# of incorrect guesses, when reaches 0 you lose comrade.
     var score = 0;      //# of successfully guessed words.
     var guessThis;      //Word to be guessed
-    var letters = [];   //stores letters that have been picked
+    var letters;   //stores letters that have been picked
                         //List of words.
-    var guessThis;
+    var guessThis;      //the word player tries to find
+    var failCheck;      //holds result of search, if negative letter wasn't found and score tries should decrement
+    
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLEV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
-    var word =  [];     //fills in with letters player picks, match them all and get points added to score.
+    var word;     //fills in with letters player picks, match them all and get points added to score.
     var playing = true;         //boolean to use in case I need to stop game
     var scoreBox = ["left", "middle", "right"];     //array for scorebox visibilty change...
 
@@ -24,7 +26,9 @@ function gameSetup(){
     document.getElementById("message").style.visibility = "visible";
     document.getElementById("start").style.display = "none";
     document.getElementById("restart").style.display = "inline-block";
+    tries = 5;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
+    score = 0;
     document.getElementById("score").innerHTML = "Score: " + score;
     word = [];
     letters = [];
@@ -54,8 +58,13 @@ function gameSetup(){
 function updateScore(){
     document.getElementById("letters").innerHTML = "Letters: " + letters;
     document.getElementById("tries").innerHTML = "Tries: " + tries;
-    
-    document.getElementById("guessMe").innerHTML = word.toString().replace(/,/g,"");
+    document.getElementById("guessMe").innerHTML = failCheck;
+
+    if(failCheck === guessThis){
+        alert("Match");
+        score++;
+        document.getElementById("score").innerHTML = "Score: " + score;
+    }
 }
 
 
@@ -73,15 +82,14 @@ function gameStart(){
             if(guessThis.charAt(x) === choice.toUpperCase()){
                 //console.log(x)  //debug my for loop contents.
                 word[x] = choice.toUpperCase();
-                
             }
-            else if(x === wordBank[target].length-1){
-                tries--;
-            }
-            
-            
+        
         }
-        console.log(tries)
+        failCheck = word.toString().replace(/,/g,"");
+        console.log(failCheck);
+
+
+        //console.log(tries)
         updateScore();
         //console.log(word);
         
