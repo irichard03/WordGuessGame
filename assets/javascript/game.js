@@ -7,7 +7,7 @@
                         //List of words.
     var guessThis;      //the word player tries to find
     var failCheck;      //holds result of search, if negative letter wasn't found and score tries should decrement
-    
+    var checker;        //stores position from .search method, if -1 score drops
     var wordBank = ["TOLSTOY","MOSCOW","STALIN","LENNIN","STALINGRAD","LENNINGRAD","KALISHNAKOV","YAKOLEV","VODKA","TOKAREV","GREGARIN","TERESHKOVA","COSMONAUT","SPUTNIK","RASPUTIN","CATHERINE","DOSTOEVSKY","PASTERNAK","URAL","MIKOYAN","TUPOLEV","POTEMKIN","BAKUNIN","DRAGO","IVAN","SHARAPOVA","GLASNOST","TZAR","SOYUZ","MIR","BABAYAGA"];
     var target;         //when word is picked, target will reference element of array.
     var choice;         //represents letter for onkeyp event..a.k.a what player picks.
@@ -65,6 +65,8 @@ function updateScore(){
         score++;
         document.getElementById("score").innerHTML = "Score: " + score;
     }
+
+    
 }
 
 
@@ -83,9 +85,11 @@ function gameStart(){
                 //console.log(x)  //debug my for loop contents.
                 word[x] = choice.toUpperCase();
             }
+            
         
         }
-        failCheck = word.toString().replace(/,/g,"");
+        failCheck = word.toString().replace(/,/g,"").toUpperCase();
+        //checker = .search()
         console.log(failCheck);
 
 
